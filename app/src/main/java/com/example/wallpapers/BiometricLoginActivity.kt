@@ -150,7 +150,7 @@ class BiometricLoginActivity : AppCompatActivity() {
         // Encrypt dummy session token
         val cipher = Cipher.getInstance("${KeyProperties.KEY_ALGORITHM_AES}/${KeyProperties.BLOCK_MODE_CBC}/${KeyProperties.ENCRYPTION_PADDING_PKCS7}")
         cipher.init(Cipher.ENCRYPT_MODE, key)
-        val encrypted = cipher.doFinal("dummy-pixabay-session-token".toByteArray())
+        val encrypted = cipher.doFinal("session-token-or-something".toByteArray())
 
         // Save Encrypted Data + IV
         prefs.edit().apply {
