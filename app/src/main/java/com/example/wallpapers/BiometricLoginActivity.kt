@@ -108,17 +108,19 @@ class BiometricLoginActivity : AppCompatActivity() {
                             val sessionToken = String(plainTokenBytes, Charsets.UTF_8)
 
                             Log.d("Auth", "Decrypted Token: $sessionToken")
-                            showToast("Access Granted!")
+                            showToast("Biometrics Verified! Hardware-bound key released.")
+                            showToast("Demo: Stolen secrets (prefs) are useless without your biometric presence!")
                             navigateToWallpaperList()
                         } catch (e: Exception) {
-                            showToast("Decryption failed. Key might have been invalidated.")
+                            showToast("Decryption failed. Stolen tokens cannot be decrypted without the biometric key.")
                         }
                     }
                 }
 
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    showToast("Authentication error: $errString")
+                    showToast("Authentication Failed: $errString")
+                    showToast("Secure vault remains locked.")
                 }
             })
 
